@@ -85,7 +85,6 @@ function init() {
     const firstSample = sampleNames[0];
     buildCharts(firstSample);
     buildMetadata(firstSample);
-    console.log("HOW CAN YOU HAVE ANY PUDDING IF YOU DON'T EAT YER BEANS???")
   });
 }
 
