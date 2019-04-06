@@ -10,12 +10,12 @@ d3.json(dacaURL, function(data) {
 function createFeatures(dacaData) {
 
   // Define a function we want to run once for each feature in the features array
-  // Give each feature a popup describing the place and time of the earthquake
+  // Give each feature a popup describing the city/location name.
   function onEachFeature(feature, layer) {
     layer.bindPopup("<p>" + feature.properties.NAME + "</p>");
   }
 
-  // Create a GeoJSON layer containing the features array on the earthquakeData object
+  // Create a GeoJSON layer containing the features array on the dacaData object
   // Run the onEachFeature function once for each piece of data in the array
   var daca = L.geoJSON(dacaData, {
     onEachFeature: onEachFeature
