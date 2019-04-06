@@ -85,6 +85,7 @@ function init() {
     const firstSample = sampleNames[0];
     buildCharts(firstSample);
     buildMetadata(firstSample);
+    buildMap(firstSample)
   });
 }
 
@@ -92,6 +93,7 @@ function optionChanged(newSample) {
   // Fetch new data each time a new sample is selected
   buildCharts(newSample);
   buildMetadata(newSample);
+  buildMap(newSample);
 }
 //to do the map, I'm pulling in the last homework. This is just an outline.
 // Perform a GET request to the query URL
@@ -134,16 +136,13 @@ function createMap(earthquakes) {
 
     // Define different map layers
     var satellite = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?" +
-      "access_token=pk.eyJ1IjoidGJlcnRvbiIsImEiOiJjamRoanlkZXIwenp6MnFuOWVsbGo2cWhtIn0.zX40X0x50dpaN96rKQKarw." +
-      "T6YbdDixkOBWH_k9GbS8JQ");
+      "access_token="+API_KEY);
 
     var darkmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?" +
-      "access_token=pk.eyJ1IjoidGJlcnRvbiIsImEiOiJjamRoanlkZXIwenp6MnFuOWVsbGo2cWhtIn0.zX40X0x50dpaN96rKQKarw." +
-      "T6YbdDixkOBWH_k9GbS8JQ");
+      "access_token="+API_KEY);
     
     var outdoors = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?" +
-      "access_token=pk.eyJ1IjoidGJlcnRvbiIsImEiOiJjamRoanlkZXIwenp6MnFuOWVsbGo2cWhtIn0.zX40X0x50dpaN96rKQKarw." +
-      "T6YbdDixkOBWH_k9GbS8JQ");
+      "access_token="+API_KEY);
   
   
     // Define a baseMaps object to hold our base layers
@@ -235,3 +234,17 @@ def mapbox_gl():
         ACCESS_KEY=MAPBOX_ACCESS_KEY,
         route_data = route_data
     )
+
+  map.on('load', function () {
+  // Add this to end of function
+    var stop_locations = {{ stop_locations|safe }}
+    stop_locations.forEach(function(marker) {
+    var el = document.createElement('div');
+    el.className = 'marker';
+    el.style.left = '-15px';
+    el.style.top = '-32px';
+  
+    new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates)
+    .addTo(map);
+    }))};
