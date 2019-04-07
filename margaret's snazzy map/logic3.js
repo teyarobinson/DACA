@@ -53,7 +53,7 @@ function createMap(daca) {
     DACA_locations: daca
   };
 
-  // Create our map, giving it the streetmap and earthquakes layers to display on load
+  // Create our map, giving it the streetmap and daca layers to display on load
   var myMap = L.map("map", {
     center: [
       37.09, -95.71
