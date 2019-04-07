@@ -18,14 +18,21 @@ crossorigin=""></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
 </head>
 <body>
-
+<!--our navbar-->
 <div class="navbar">
   <a href="index.html">Home</a>
-  <a href="sarahschart.html">Country of Origin</a>
-  <a href="mattschart.html">Age and marital status pie</a>
+  <a href="sarahschart">Country of Origin</a>
+  <a href="mattschart">Age and marital status pie</a>
   <a href="map.html">Map of current DACA recipients</a>
-  </div> 
+  <a href="sqlite">sqlite</a>  
+</div> 
  <!--The div where we will inject our charts -->
+ <div class="watermarked">
+    <img src="images/immigrants.jpg">
+  </div>
+  <div class="box-text" alignment="center, center">
+    <p>Deferred Action for Childhood Arrivals (DACA) is an administration is a kind of administrative relief from deportation. Our visualizations explore aspects of the current data for the program for location, country of origin, ages, and gender, as reflected in a SQLite database.</p>
+  </div>
  <div id="display"></div>
 
  <!-- API key -->
