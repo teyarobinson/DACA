@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DACA Visualizations</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+  <!-- <script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/Chart.js') }}"></script>
+  <script type="text/javascript" src="config.js"></script> -->
+  <!-- <script src="{{ url_for('static', filename='js/config.js') }}"></script> -->
+
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+  crossorigin=""></script>
+
+  <!--D3 cdn-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+  <script type="text/javascript" src="/static/js/config.js"></script>
+  <!-- <script src="{{ url_for('static', filename='js/config.js') }}"></script> -->
+  <script type="text/javascript" src="/static/js/app.js"></script>
+
+
+
+
+    <!-- Bootstrap and css stuff
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    -->
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+    integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+    crossorigin=""></script>
+  
+    <!--D3 cdn-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+  
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" src="/static/css/style.css"></script>
+ 
+</head>
+
+<body>
+ <!-- <style>
+    body{
+    background-color: #333;}
+  </style>
+-->  
+  <!--our navbar-->
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="/originChart">Country of Origin</a>
+    <a href="/ageChart">Age chart</a>
+    <a href="/genderChart">Gender Chart</a>
+    <a href="/mapChart">Map of current location</a>
+</div> 
+<!--our fancy watermark-->
+<div class="watermarked">
+    <img src="/static/images/immigrants.jpg">
+  </div>
+<!--text box-->
+<div align="center">
+    <div class="box-text" align=0 center, center>
+      <p>Deferred Action for Childhood Arrivals (DACA) is a kind of administrative relief from deportation. Our visualizations explore aspects of the current data for the program for location, country of origin, ages, and gender, as reflected in a SQLite database.</p>
+    </div></div>
+<!--div for charts-->    
+<div id="chartContainer"></div>
+<div id="pie"></div>
+<div id="pie2"></div>
+<!--  <div class="wrapper">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              
+
+            </div>
+          </div>
+        </nav>
+        <div class="hero text-center">
+          <h1>DACA Recipients</h1>
+          <p></p>
+        </div>
+      -->
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h1> Daca Test Site</h1>
+        <p></p>
+      </div>
+    </div>
+  
+    <div class="container">
+      <div class="row margin-top-50">
+        <div class="col-md-2">
+          <div class="filters">
+            <div class="panel panel-default">
+              <div class="panel-heading">Filter Search</div>
+              <div class="panel-body">
+                <form>
+                  <div class="form-group">
+                    <ul class="list-group" id="filters">
+                        <li class="filter list-group-item">
+                          <label for="dropDown">Make a Selection</label>
+                          <select id="dropDown" style="color:black"onchange="selection = this.value;">
+                            <option style="color:black"></option>
+                            <option value="ageChart">Age Chart</option>
+                            <option value="genderChart">Gender Chart</option>
+                            <option value="mapChart">Map</option>
+                            <option value="originChart">Country of Birth</option>
+  onchange="selection = this.value;" 
+                            </select>
+                        </li>  
+                    </ul>
+                  </div>
+                  <button id="filter-btn" type="submit" class="btn btn-default">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="col-md-5">
+        <div id="pie"></div>
+      </div>
+      <div class="col-md-5">
+        <div id="pie2"></div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div id="chartContainer" style="height: 370px; width: 100%; background-color: white"></div>
+    </div>
+  </div>-->
+  <!-- <div class="row">
+    <div class="col-md-8">
+      <div id="map" style="height: 200px; width: 200px"></div>
+    </div>
+  </div> -->
+  <!-- <div id="map" style="height: 900px; width: 1400px"></div> -->
+
+
+  <!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
+<!--  <div id="map" style="height: 100px; width: 100px"></div>
+  
+-->
+  <script type="text/javascript" src="/static/js/app.js"></script>
+  <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- <script src="{{ url_for('static', filename='js/bonus.js') }}"></script> -->
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <!-- <script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/Chart.js') }}"></script> -->
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <script type="text/javascript" src="/static/js/config.js"></script>
+  <!-- <script src="{{ url_for('static', filename='js/config.js') }}"></script> -->
+  <script type="text/javascript" src="/static/js/app.js"></script>
+  <link rel="stylesheet" src="/static/css/style.css"></script>
+</body>
+
+</html>
