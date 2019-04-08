@@ -49,7 +49,7 @@ var dacaURL = "/map";
   
     // Create overlay object to hold our overlay layer
     var overlayMaps = {
-      DACA_locations: daca
+      DACA_recipient_locations: daca
     };
   
     // Create our map, giving it the streetmap and earthquakes layers to display on load
@@ -75,16 +75,8 @@ var dropDownSelection = d3.select("#dropDown");
 var selection = dropDownSelection.property("value");
 submit.on("click", function() {
   d3.event.preventDefault();
-  // document.getElementById("pie").innerHTML = "";
-  // document.getElementById("pie2").innerHTML = "";
-  // document.getElementById("map").innerHTML = "";
+
   document.getElementById("display").innerHTML = "";
-
-// function buildPieChart() {
-  // Use `d3.json` to fetch the data for the pie and bubble chart
-  // function BuildageChart() {
-
-
 
   if(selection ==="mapChart") {
     window.location.reload();;
@@ -130,8 +122,7 @@ submit.on("click", function() {
 })}
 
 
-// // function buildPieChart() {
-//   // Use `d3.json` to fetch the data for the pie and bubble chart
+// Use `d3.json` to fetch the data for the pie and bubble chart
 var url = "/genderChart";
 if(selection ==="genderChart") { 
 
@@ -172,7 +163,6 @@ if(selection ==="genderChart") {
 }
 
 
-// // window.onload = function () {
 var url = "/originChart";
 if(selection==="originChart") {
 d3.json(url).then(function(data) {
@@ -221,7 +211,7 @@ d3.json(url).then(function(data) {
     }]
   });
 
-// }
+
   chart.render();  
 });
 }

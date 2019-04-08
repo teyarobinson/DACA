@@ -52,7 +52,7 @@ inspector = inspect(engine)
 def index():
     """Return the homepage."""
     
-    return render_template("index.html")
+    return render_template("/Templates/index.html")
     
 
 @app.route("/ageChart")

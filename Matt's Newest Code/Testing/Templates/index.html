@@ -5,9 +5,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Flask Plotlyjs Example</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+  <title>DACA Visualization</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--css stuff-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/css/style.css"></script>
+<!-- Leaflet CSS & JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+crossorigin=""></script>
+<!--D3 cdn-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script scdrc="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>-->
   <!-- <script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/Chart.js') }}"></script>
   <script type="text/javascript" src="config.js"></script> -->
@@ -51,7 +65,15 @@
 </head>
 
 <body >
-    <div class="wrapper">
+  <!--our navbar-->
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="sarahschart">Country of Origin</a>
+    <a href="mattschart">Age and marital status pie</a>
+    <a href="map.html">Map of current DACA recipients</a>
+    <a href="sqlite">sqlite</a>  
+  </div> 
+ <!--   <div class="wrapper">
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header">
@@ -63,7 +85,7 @@
         <div class="hero text-center">
           <h1>DACA Recipients</h1>
           <p></p>
-        </div>
+        </div>-->
 
   <!-- <div class="container">
     <div class="row">
@@ -73,7 +95,7 @@
       </div>
     </div> -->
   
-    <div class="container">
+<!--    <div class="container">
       <div class="row margin-top-50">
         <div class="col-md-2">
           <div class="filters">
@@ -84,9 +106,9 @@
                   <div class="form-group">
                     <ul class="list-group" id="filters">
                         <li class="filter list-group-item">
-                          <label for="dropDown">Make a Selection</label>
-                          <select id="dropDown" style="color:black"onchange="selection = this.value;">
-                            <option style="color:black"></option>
+   <label for="dropDown">Make a Selection</label>-->
+                          <select id="navbar" style="color:white"onchange="selection = this.value;">
+                            <option style="color:whitesmoke"></option>
                             <option value="ageChart">Age Chart</option>
                             <option value="genderChart">Gender Chart</option>
                             <option value="mapChart">Map</option>
