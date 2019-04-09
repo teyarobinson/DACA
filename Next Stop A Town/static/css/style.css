@@ -131,3 +131,8 @@ div.plot-container.plotly {
 g.pielayer {
   font-size: 50px !important;
 }
+.display {
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-top: 25px;
+}
