@@ -118,6 +118,7 @@ button {
 	text-align: center;
 	margin: 0 auto !important;
 }
+/*probably unneeded, but terrified to remove.*/
 div#display.js-plotly-plot {
 	position: relative;
 	align-content: center !important;
@@ -139,7 +140,7 @@ svg.main-svg {
 	fill: "white" !important;
 	fill-opacity: 1 !important;
 }
-
+/*This probably doesn't do anything, but we're too scared to take it out.*/
 div#display.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom.js-plotly-plot {
 	align-items: center !important;
 	align-content: center !important;
@@ -167,7 +168,7 @@ g.slicetext {
 	fill: "white" !important;
 	fill-opacity: 1 !important;
 }
-
+/*We're pretty sure this is the actually working one.*/
 text.slicetext {
 	font-family: "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif";
 	fill: white !important;

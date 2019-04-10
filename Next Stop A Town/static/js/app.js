@@ -61,9 +61,7 @@ var dacaURL = "/map";
       layers: [streetmap, daca]
     });
   
-    // Create a layer control
-    // Pass in our baseMaps and overlayMaps
-    // Add the layer control to the map
+
     L.control.layers(baseMaps, overlayMaps, {
       collapsed: false
     }).addTo(myMap);
@@ -75,14 +73,11 @@ var dropDownSelection = d3.select("#dropDown");
 var selection = dropDownSelection.property("value");
 submit.on("click", function() {
   d3.event.preventDefault();
-  // document.getElementById("pie").innerHTML = "";
-  // document.getElementById("pie2").innerHTML = "";
-  // document.getElementById("map").innerHTML = "";
+
   document.getElementById("display").innerHTML = "";
 
-// function buildPieChart() {
   // Use `d3.json` to fetch the data for the pie and bubble chart
-  // function BuildageChart() {
+
 
 
 
@@ -146,8 +141,8 @@ submit.on("click", function() {
 })}
 
 
-// // function buildPieChart() {
-//   // Use `d3.json` to fetch the data for the pie and bubble chart
+
+// Use `d3.json` to fetch the data for the pie and bubble chart
 var url = "/genderChart";
 if(selection ==="genderChart") { 
 
@@ -203,7 +198,7 @@ if(selection ==="genderChart") {
 }
 
 
-// // window.onload = function () {
+
 var url = "/originChart";
 if(selection==="originChart") {
 d3.json(url).then(function(data) {
@@ -252,7 +247,7 @@ d3.json(url).then(function(data) {
     }]
   });
 
-// }
+
   chart.render();  
 });
 }
